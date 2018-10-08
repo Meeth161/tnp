@@ -123,7 +123,7 @@ app.get('/dashboard', adminMiddleware(), (req, res) => {
   res.render('dashboard.hbs');
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);
 })
 
