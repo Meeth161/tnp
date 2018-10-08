@@ -34,24 +34,24 @@ app.use(flash());
 
 passport.use(new LocalStrategy( (username, password, done) => {
 
-    User.findOne({email: username}, (err, doc) => {
+  User.findOne({email: username}, (err, doc) => {
 
-      if(err) { return done(err); }
+    if(err) { return done(err); }
 
-      if(!doc) { return done(null, false); }
+    if(!doc) { return done(null, false); }
 
-      const hash = doc.password;
+    const hash = doc.password;
 
-      bcryptjs.compare(password, hash).then((res) => {
-          if(res === true){
-            return done(null, doc);
-          }
-          else {
-            return done(null, false);
-          }
-      });
+    bcryptjs.compare(password, hash).then((res) => {
+      if(res === true){
+        return done(null, doc);
+      }
+      else {
+        return done(null, false);
+      }
     });
-  }
+  });
+}
 ));
 
 app.get('/', authMiddleWare(), (req, res) => {
@@ -70,7 +70,7 @@ app.get('/logout', (req, res) => {
 
 app.get('/profile', authenticationMiddleware(), (req, res) => {
   res.render('profile.hbs', {
-    username: req.user.username
+    username: req.user.email
   });
 });
 
@@ -84,10 +84,10 @@ app.get('/home', authenticationMiddleware(), (req, res) => {
 });
 
 app.post('/login', passport.authenticate('local', {
-    successRedirect: '/profile',
-    failureRedirect: '/login',
-    failureFlash: true
-  })
+  successRedirect: '/profile',
+  failureRedirect: '/login',
+  failureFlash: true
+})
 );
 
 app.get('/signup', authMiddleWare(), (req, res) => {
@@ -119,7 +119,7 @@ app.post('/signup', (req, res) => {
   });
 });
 
-app.get('/dashboard', adminMiddleware(), (req, res) => {
+app.get('/dashboard', (req, res) => {
   res.render('dashboard.hbs');
 });
 
@@ -151,29 +151,14 @@ function authMiddleWare () {
     if (req.isAuthenticated()) {
       if(req.user.role === 'student')
       {
-        res.redirect('/home');
+        return res.redirect('/home');
       }
 
       if(req.user.role === 'admin')
       {
-        res.redirect('/dashboard');
+        return res.redirect('/dashboard');
       }
     }
     return next()
-  }
-}
-
-function adminMiddleware () {
-  return function(req, res, next) {
-    if(req.isAuthenticated()) {
-      if(req.user.role === 'admin')
-      {
-        return next();
-      }
-      else {
-        res.redirect('/home');
-      }
-    }
-    res.redirect('/login');
   }
 }
