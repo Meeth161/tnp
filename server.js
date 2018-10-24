@@ -120,7 +120,11 @@ app.post('/signup', (req, res) => {
 });
 
 app.get('/dashboard', (req, res) => {
-  res.render('dashboard.hbs');
+  User.find({role: 'student'}, (err, doc) => {
+    res.render('dashboard.hbs', {
+      users: doc
+    });
+  })
 });
 
 app.listen(PORT, () => {
