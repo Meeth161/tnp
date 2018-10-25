@@ -78,7 +78,8 @@ app.get('/home', authenticationMiddleware(), (req, res) => {
   console.log(req.user.id);
   Post.find({}, (err, doc) => {
     res.render('home.hbs', {
-      posts: doc
+      posts: doc,
+      user:req.user
     });
   });
 });
