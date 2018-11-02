@@ -14,6 +14,10 @@ var User = mongoose.model('User', {
     type: String,
     required: true,
     default: 'student'
+  },
+  profile: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Profile'
   }
 });
 

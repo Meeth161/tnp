@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const {mongoose} = require('./db/mongoose.js');
 const {User} = require('./models/user');
 const {Post} = require('./models/post');
+const {Profile} = require('./models/profile');
 const PORT = process.env.PORT || 3000;
 
 
@@ -105,7 +106,7 @@ app.post('/signup', (req, res) => {
     user.save().then((doc) => {
       req.login(doc, (err) => {
         if(err)
-        return next(err);
+          return next(err);
 
         return res.redirect('/profile');
       })
@@ -126,6 +127,25 @@ app.get('/dashboard', (req, res) => {
       users: doc
     });
   })
+});
+
+app.get('/edit', (req, res) => {
+  res.render('edit.hbs');
+});
+
+app.post('/edit', (req, res) => {
+  console.log(req.body);
+  var profile = new Profile({
+    about: {name: {firstName: req.body.name, lastName: req.body.name}, usn: req.body.usn}
+  });
+
+  profile.save().then((doc) => {
+    console.log(JSON.stringify(doc, undefined, 2));
+    res.redirect('/profile');
+  }, (e) => {
+    console.log(e);
+    res.send(e);
+  });
 });
 
 app.listen(PORT, () => {
