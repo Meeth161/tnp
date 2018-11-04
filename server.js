@@ -97,36 +97,48 @@ app.get('/signup', authMiddleWare(), (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-  bcryptjs.hash(req.body.password, 10).then((hash) => {
-    var user = new User({
-      email: req.body.email,
-      password: hash
-    });
 
-    user.save().then((doc) => {
-      req.login(doc, (err) => {
-        if(err)
-          return next(err);
-
-        return res.redirect('/profile');
-      })
-      console.log(JSON.stringify(doc, undefined, 2));
-    }, (e) => {
-      res.send(e);
-      console.log(e);
-    });
-  }, (e) =>{
-    console.log(e);
-    res.send(e);
+  var profile = new Profile({
+    about: {name: {firstName: req.body.fName, lastName: req.body.lName, middleName: req.body.mName}, usn: req.body.usn, contact: {email: req.body.email, phone: req.body.phone}}
   });
+
+  profile.save().then((doc) =>{
+    bcryptjs.hash(req.body.password, 10).then((hash) => {
+      var user = new User({
+        email: req.body.email,
+        password: hash,
+        profile: profile._id
+      });
+
+      user.save().then((doc) => {
+        req.login(doc, (err) => {
+          if(err)
+            return next(err);
+
+          return res.redirect('/profile');
+        })
+        console.log(JSON.stringify(doc, undefined, 2));
+      }, (e) => {
+        res.send(e);
+        console.log(e);
+      });
+    }, (e) =>{
+      console.log(e);
+      res.send(e);
+    });
+  }, (e) => {
+    res.send(e);
+    console.log(e);
+  })
 });
 
 app.get('/dashboard', (req, res) => {
-  User.find({role: 'student'}, (err, doc) => {
+  User.find({role: 'student'}).populate('profile').then((doc) => {
+    console.log(doc, JSON.stringify, undefined, 2);
     res.render('dashboard.hbs', {
       users: doc
     });
-  })
+  });
 });
 
 app.get('/edit', (req, res) => {

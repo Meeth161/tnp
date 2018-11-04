@@ -1,16 +1,272 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Profile Page</title>
+
+    <style media="screen">
+      body {
+        background-color: #eee;
+      }
+
+    </style>
+
   </head>
   <body>
-    {{header}}
 
-    <form class="" action="/edit" method="post">
-      <input type="text" name="name" />
-      <input type="text" name="usn" />
-      <input type="submit" value="submit" />
-    </form>
+    {{> header}}
+
+    <div class="container-fluid my-3">
+      <div class="row">
+
+        <div class="col-sm-3">
+
+        </div>
+
+        <div class="col-sm-6">
+           <div class="container" id="main">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <h5><p text="PROFILE" align ="center">PROFILE</p></h5>
+                </div>
+                <div class="card-body">
+                   <p text="NAME" align ="center">Name</p>
+                   <p text="BATCH" align ="center">2019 Pasout Batch</p>
+                   <p text="SEMESTER" align ="center">Semester</p>
+                </div>
+              </div>
+
+
+              <div class="card" mb-3 id="About">
+                 <div class="card-header">
+                    <h5>ABOUT</h5>
+                 </div>
+                 <div class="card-body">
+                   <div class="row">
+                     <div class="col-sm-4">
+                       <p>Address</p>
+                       <p>Contact No</p>
+                     </div>
+                     <div class="col-sm-8">
+                       <p><textarea class="btn btn-secondary btn-lg" aria-label="With textarea"></textarea></p>
+                       <p><input type="text" class="btn btn-secondary btn-lg" name="contact no" /></p>
+                     </div>
+                   </div>
+                 </div>
+              </div>
+
+              <div class="card" mb-3 id="Education">
+                 <div class="card-header">
+                    <h5>EDUCATION</h5>
+                 </div>
+                 <div class="card-body">
+                  <div class="row">
+                     <div class="col-sm-6">
+                      <h4><p>Current/Ongoing Course</p>
+                     </div>
+                  </div>
+                  <div class="row">
+
+                    <div class="col-sm-4">
+                    </div>
+
+                      <div class="col-sm-4">
+                        <thead>
+                         <tr>
+                           <th scope="col"></th>
+                           <th scope="col"><strong>CGPA</strong></th>
+                         </tr>
+                       </thead>
+                      </div>
+
+                      <div class="col-sm-4">
+                        <thead>
+                         <tr>
+                           <th scope="col"></th>
+                           <th scope="col"><strong>SGPA</strong></th>
+                         </tr>
+                       </thead>
+                      </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <h6><p>Semester1</p></h6>
+                      <h6><p>Semester2</p></h6>
+                      <h6><p>Semester3</p></h6>
+                      <h6><p>Semester4</p></h6>
+                      <h6><p>Semester5</p></h6>
+                      <h6><p>Semester6</p></h6>
+                      <h6><p>Semester7</p></h6>
+                      <h6><p>Semester8</p></h6>
+                    </div>
+                    <div class="col-sm-4">
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                    </div>
+                    <div class="col-sm-4">
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                      <p><input type="text" name="score" /></p>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6><p>Total Backlogs</p></h6>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="text" name="Total Backlogs" />
+                  </div>
+                </div>
+
+              </div>
+                 <hr>
+                 <div class="card-body">
+                    <div class="row">
+                       <div class="col-sm-9">
+                        <h4><p>Update Education Details</p>
+                       </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-10">
+                         <h6><p>School/Institution</p><h6>
+                         <input type="text" class="btn-lg btn-block" name="School/Institutio" />
+                         <h6><p>Board/University</p><h6>
+                         <input type="text" class="btn-lg btn-block" name="Board/University" />
+                         <h6><p>Program/Degree</p><h6>
+                           <select class="btn-lg btn-block">
+                              <option value="" disabled selected>None</option>
+                              <option value="volvo">Class X</option>
+                              <option value="saab"> Class XII</option>
+                              <option value="mercedes">B.E/B.Tech</option>
+                              <option value="audi">Other Degree</option>
+                          </select>
+                          <h6><p>Branch/Specialization</p><h6>
+                          <input type="text" class=" btn-lg btn-block" name="Board/University" />
+                          <h6><p>Score</p><h6>
+                          <input type="text" class="btn-lg" name="Score" />
+                       </div>
+                   </div>
+                    <hr>
+                    <div class="col-sm-9">
+                     <h4><p>Update Education Details</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-10">
+                         <h6><p>School/Institution</p><h6>
+                         <input type="text" class="btn-lg btn-block" name="School/Institutio" />
+                         <h6><p>Board/University</p><h6>
+                         <input type="text" class="btn-lg btn-block" name="Board/University" />
+                         <h6><p>Program/Degree</p><h6>
+                           <select class="btn-lg btn-block">
+                              <option value="" disabled selected>None</option>
+                              <option value="volvo">Class X</option>
+                              <option value="saab"> Class XII</option>
+                              <option value="mercedes">B.E/B.Tech</option>
+                              <option value="audi">Other Degree</option>
+                          </select>
+                          <h6><p>Branch/Specialization</p><h6>
+                          <input type="text" class=" btn-lg btn-block" name="Board/University" />
+                          <h6><p>Score</p><h6>
+                          <input type="text" class="btn-lg" name="Score" />
+                       </div>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="card" mb-3 id="Internship & Workshop">
+                 <div class="card-header">
+                    <h5>INTERNSHIP & WORK EXPERIENCE</h5>
+                 </div>
+                <div class="card-body">
+                 <div class="row">
+                   <div class="col-sm-10">
+                      <h6><p>Company</p><h6>
+                      <input type="text" class="btn-lg btn-block" name="Company" />
+                      <h6><p>Job Title</p><h6>
+                      <input type="text" class="btn-lg btn-block" name="Job Title" />
+                      <h6><p>Position Type</p><h6>
+                      <select class="btn-lg btn-block">
+                           <option value="" disabled selected>None</option>
+                           <option value="volvo">Part Time</option>
+                           <option value="saab">Full Time</option>
+                           <option value="mercedes">Internship</option>
+                       </select>
+                      <h6><p>Location</p><h6>
+                      <input type="text" class="btn-lg btn-block" name="Location" />
+                      <h6><p>Time Period</p><h6>
+                      <div class="row">
+                        <div class="col-sm-6">
+                         <p text="Start Date">Start Date</p>
+                          <input type="date" />
+                        </div>
+                        <div class="col-sm-6">
+                          <p text="End Date">End Date</p>
+                          <input type="date" />
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" mb-3 id="Extra Curricular Activities">
+                 <div class="card-header">
+                    <h5>EXTRA CURRICULAR ACTIVITIES</h5>
+                 </div>
+                 <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-10">
+                         <h6><p>Category</p><h6>
+                         <input type="text" class="btn-lg btn-block" name="Category" />
+                     </div>
+                     <div class="col-sm-10">
+                        <h6><p>Description</p><h6>
+                        <textarea class="btn-lg btn-block" rows="4" cols="65">
+                        </textarea>
+                    </div>
+                   </div>
+                 </div>
+              </div>
+
+              <div class="card" mb-3 id="Resume">
+                 <div class="card-header">
+                    <h5>RESUME</h5>
+                 </div>
+                 <div class="card-body">
+
+                 </div>
+              </div>
+
+           </div>
+         </div>
+    </div>
+
+    <div class="col-sm-3">
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 </html>

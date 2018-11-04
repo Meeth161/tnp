@@ -17,7 +17,8 @@ var User = mongoose.model('User', {
   },
   profile: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Profile'
+    ref: 'Profile',
+    required: true
   }
 });
 

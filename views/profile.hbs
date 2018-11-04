@@ -9,137 +9,208 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>Profile Page</title>
+
+    <style media="screen">
+      body {
+        background-color: #eee;
+      }
+
+    </style>
+
   </head>
   <body>
-    <div class="row">
 
-      <div class="col-sm-1">
-      </div>
+    {{> header}}
 
-      <div class="col-sm-3">
+    <div class="container-fluid my-3">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="#Profile" class="text-primary">Pofile</a></li>
+                <li class="list-group-item"><a href="#About" class="text-primary">About</a></li>
+                <li class="list-group-item"><a href="#Education" class="text-primary">Education</a></li>
+                <li class="list-group-item"><a href="#Internships & Work Experience" class="text-primary">Internship & Work Experience</a></li>
+                <li class="list-group-item"><a href="#Extra curricular Activities" class="text-primary">Extra Curricular Activities</a></li>
+                <li class="list-group-item"><a href="#Resume" class="text-primary">Resume</a></li>
+              </ul>
+          </div>
 
-        <div class="card" style="width: 18rem;">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><p><a href="id" class="text-primary">Pofile</a></p></li>
-              <li class="list-group-item"><p><a href="id1" class="text-primary">About</a></p></li>
-              <li class="list-group-item"><p><a href="id2" class="text-primary">Education</a></p></li>
-              <li class="list-group-item"><p><a href="id3" class="text-primary">Internship & Workshops</a></p></li>
-              <li class="list-group-item"><p><a href="id4" class="text-primary">Extra Curricular Activities</a></p></li>
-              <li class="list-group-item"><p><a href="id5" class="text-primary">Resume</a></p></li>
-            </ul>
+          <a href="/edit" class="btn btn-primary mt-5 btn-block">Edit</a>
+
         </div>
 
-      </div>
-
-      <div class="col-sm-0.5">
-      </div>
-
-      <div class="col-sm-6">
-
-        <div class="card" style="width: 40rem;">
-           <span class="border-top"></span>
-              <div id="Profile">
-                 <p>Profile</p>
-                 <hr class="my-4">
+        <div class="col-sm-9">
+           <div class="container" id="main">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <h5><p text="PROFILE" align ="center">PROFILE</p></h5>
+                </div>
+                <div class="card-body">
+                   <p text="NAME" align ="center">Name</p>
+                   <p text="BATCH" align ="center">2019 Pasout Batch</p>
+                   <p text="SEMESTER" align ="center">Semester</p>
+                </div>
               </div>
-        </div>
 
-        <div class="card" style="width: 40rem;">
-          <span class="border border-secondary"></span>
-            <div class="container">
 
-                  <div id="about">
-                      <h5>About</h5>
-                        <ul class="list-group list-group-flush">
-                         <li class="list-group-item">Date of Birth</li>
-                         <li class="list-group-item">Gender</li>
-                         <li class="list-group-item">Category</li>
-                         <li class="list-group-item">Contact No</li>
-                         <li class="list-group-item">Email</li>
-                         <li class="list-group-item">Address</li>
-                         <li class="list-group-item"></li>
-                        </ul>
-                  </div>
+              <div class="card" mb-3 id="About">
+                 <div class="card-header">
+                    <h5>ABOUT</h5>
+                 </div>
+                 <div class="card-body">
+                   <div class="row">
+                     <div class="col-sm">
+                       <p>Date of Birth</p>
+                       <p>Gender</p>
+                       <p>Address</p>
+                       <p>Contact No</p>
+                       <p>Email Id</p>
+                     </div>
+                     <div class="col-sm">
+                       <!--<p>{{user.about.dob}}</p>-->
+                       <p>dob</p>
+                       <p>Male</p>
+                       <p>Address</p>
+                       <p>Contact No</p>
+                       <p>Email Id</p>
 
-            </div>
-          </div>
+                     </div>
+                   </div>
 
-          <div class="card" style="width: 40rem;">
-            <span class="border border-secondary"></span>
-              <div class="container">
-
-                  <div id2="Education">
-                      <p>Current/Ongoing Course</p>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item"></li>
-                        </ul>
-                  </div>
-
+                 </div>
               </div>
-          </div>
 
-          <div class="card" style="width: 40rem;">
-          <span class="border border-secondary"></span>
-              <div class="container">
-
-                  <div id2="Education">
-                      <p>Previous Education</p>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item"></li>
-                        </ul>
+              <div class="card" mb-3 id="Education">
+                 <div class="card-header">
+                    <h5>EDUCATION</h5>
+                 </div>
+                 <div class="card-body">
+                  <div class="row">
+                     <div class="col-sm-6">
+                      <h4><p>Current/Ongoing Course</p>
+                     </div>
+                     <div class="col-sm-3">
+                      <h5><p text="cgpa" align="right">CGPA</p></h5>
+                    </div>
                   </div>
-
+                    Bachelor of Engineering<br>Computer Science and Engineering<br>USN|2019 Passout Batch<br>JUN 2015-JUN 2019
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">Semester</th>
+                            <th scope="col">1</th>
+                            <th scope="col">2</th>
+                            <th scope="col">3</th>
+                            <th scope="col">4</th>
+                            <th scope="col">5</th>
+                            <th scope="col">6</th>
+                            <th scope="col">7</th>
+                            <th scope="col">8</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">CGPA</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">SGPA</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Ongoing Backlogs</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Total Backlogs</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                 </div>
+                 <hr>
+                 <div class="card-body">
+                    <div class="row">
+                       <div class="col-sm-6">
+                        <h4><p>Class 12th/Diploma</p>
+                       </div>
+                       <div class="col-sm-3">
+                        <h5><p text="score" align="right">Score</p></h5>
+                      </div>
+                    </div>
+                    College  Name<br>Board<br>12th/Diploma<br>2014-2015
+                    <hr>
+                    <div class="row">
+                       <div class="col-sm-6">
+                        <h4><p>Class 10th</p>
+                       </div>
+                       <div class="col-sm-3">
+                        <h5><p text="score" align="right">Score</p></h5>
+                      </div>
+                    </div>
+                    School  Name<br>Board<br>10th<br>2013-2014
+                 </div>
               </div>
-          </div>
 
-          <div class="card" style="width: 40rem;">
-            <span class="border border-secondary"></span>
-              <div class="container">
-
-                  <div id3="Internship & Workshops">
-                      <p>Internship & Workshops</p>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item"></li>
-                        </ul>
-                  </div>
-
+              <div class="card" mb-3 id="Internship & Work Experience">
+                 <div class="card-header">
+                    <h5>INTERNSHIP & WORK EXPERIENCE</h5>
+                 </div>
+                 <div class="card-body">
+                    Company Name<br>Job Title<br>Location<br>Star date<br>End Date
+                 </div>
               </div>
-          </div>
 
-          <div class="card" style="width: 40rem;">
-            <span class="border border-secondary"></span>
-              <div class="container">
-
-                  <div id4="Extra curricular Activities">
-                      <p>Extra curricular Activities</p>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item"></li>
-                        </ul>
-                  </div>
-
+              <div class="card" mb-3 id="Extra Curricular Activities">
+                 <div class="card-header">
+                    <h5>EXTRA CURRICULAR ACTIVITIES</h5>
+                 </div>
+                 <div class="card-body">
+                    Category<br>Description
+                 </div>
               </div>
-          </div>
 
-          <div class="card" style="width: 40rem;">
-          <span class="border border-secondary"></span>
-              <div class="container">
+              <div class="card" mb-3 id="Resume">
+                 <div class="card-header">
+                    <h5>RESUME</h5>
+                 </div>
+                 <div class="card-body">
 
-                  <div id5="Resume">
-                      <p>Resume</p>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item"></li>
-                        </ul>
-                  </div>
-
+                 </div>
               </div>
-          </div>
 
-      </div>
-  </div>
-
-      <div class="col-sm-3">
-      </div>
-
+           </div>
+         </div>
+    </div>
 
 
     <!-- Optional JavaScript -->

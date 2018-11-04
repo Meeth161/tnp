@@ -22,6 +22,10 @@ var Profile = mongoose.model('Profile', {
         type: String,
         trim: true
       },
+      middleName: {
+        type: String,
+        trim: true
+      },
       lastName: {
         type: String,
         trim: true
