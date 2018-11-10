@@ -160,6 +160,14 @@ app.post('/edit', (req, res) => {
   });
 });
 
+app.get('/jobprofiles', (req, res) => {
+  res.render('jobprofiles.hbs');
+});
+
+app.get('/job', (req, res) => {
+  res.render('job.hbs');
+});
+
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);
 })
