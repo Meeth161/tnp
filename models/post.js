@@ -12,6 +12,10 @@ var Post = mongoose.model('Post', {
   content: {
     type: String,
     required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now()
   }
 });
 

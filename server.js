@@ -11,8 +11,9 @@ const {mongoose} = require('./db/mongoose.js');
 const {User} = require('./models/user');
 const {Post} = require('./models/post');
 const {Profile} = require('./models/profile');
+const {Job} = require('./models/job');
 const PORT = process.env.PORT || 3000;
-
+global.currentUser;
 
 var app = express();
 
@@ -70,8 +71,11 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/profile', authenticationMiddleware(), (req, res) => {
-  res.render('profile.hbs', {
-    username: req.user.email
+  req.user.populate('profile', (err, user) => {
+      global.currentUser = user;
+      res.render('profile.hbs', {
+        username: global.currentUser.email
+      });
   });
 });
 
@@ -134,7 +138,7 @@ app.post('/signup', (req, res) => {
 
 app.get('/dashboard', (req, res) => {
   User.find({role: 'student'}).populate('profile').then((doc) => {
-    console.log(doc, JSON.stringify, undefined, 2);
+    console.log(doc.profile, JSON.stringify, undefined, 2);
     res.render('dashboard.hbs', {
       users: doc
     });
@@ -166,6 +170,27 @@ app.get('/jobprofiles', (req, res) => {
 
 app.get('/job', (req, res) => {
   res.render('job.hbs');
+});
+
+app.get('/about', (req, res) => {
+  res.render('about.hbs');
+});
+
+app.post('/notice', (req, res) => {
+  console.log(global.currentUser);
+  var post = new Post({
+    title: req.body.title,
+    content: req.body.content,
+    username: currentUser.profile.about.name.firstName
+  });
+
+  post.save().then((doc) => {
+    console.log('Notice Sent');
+    res.redirect('/dashboard');
+  }, (e) => {
+    console.log(e);
+    res.send(e);
+  })
 });
 
 app.listen(PORT, () => {

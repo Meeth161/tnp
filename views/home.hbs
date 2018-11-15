@@ -38,13 +38,13 @@
       </div>
 
       <div class="col-8">
-        <div class="card my-5 px-3">
-          {{#each posts}}
+        {{#each posts}}
+          <div class="card mt-5 px-3">
             <h4 class="display-4">{{title}}</h4>
             {{username}}
             <p>{{content}}</p>
-          {{/each}}
-        </div>
+          </div>
+        {{/each}}
       </div>
 
     </div>

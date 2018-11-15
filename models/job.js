@@ -7,8 +7,7 @@ var Job = mongoose.model('Job', {
     trim: true
   },
   comapany: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Company',
+    type: String,
     required: true
   },
   ctc: {
@@ -22,7 +21,7 @@ var Job = mongoose.model('Job', {
     }
   },
   location: {
-    type: String[]
+    type: [String]
   },
   description: {
     type: String
@@ -34,4 +33,4 @@ var Job = mongoose.model('Job', {
   }
 });
 
-module.exports = {User};
+module.exports = {Job};
