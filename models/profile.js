@@ -130,7 +130,11 @@ var Profile = mongoose.model('Profile', {
     }
   },
   projects: [projectSchema],
-  activities: [String]
+  activities: [String],
+  status: {
+    type: String,
+    default: 'not verified'
+  }
 });
 
 module.exports = {Profile};

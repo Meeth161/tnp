@@ -80,7 +80,6 @@ app.get('/profile', authenticationMiddleware(), (req, res) => {
 });
 
 app.get('/home', authenticationMiddleware(), (req, res) => {
-  console.log(req.user.id);
   Post.find({}, (err, doc) => {
     res.render('home.hbs', {
       posts: doc,
@@ -119,7 +118,7 @@ app.post('/signup', (req, res) => {
           if(err)
             return next(err);
 
-          return res.redirect('/profile');
+          return res.redirect('/edit');
         })
         console.log(JSON.stringify(doc, undefined, 2));
       }, (e) => {
@@ -137,11 +136,14 @@ app.post('/signup', (req, res) => {
 });
 
 app.get('/dashboard', (req, res) => {
+
   User.find({role: 'student'}).populate('profile').then((doc) => {
-    console.log(doc.profile, JSON.stringify, undefined, 2);
-    res.render('dashboard.hbs', {
-      users: doc
-    });
+    Post.find({}).then((posts) => {
+      res.render('dashboard.hbs', {
+        users: doc,
+        posts: posts
+      });
+    })
   });
 });
 

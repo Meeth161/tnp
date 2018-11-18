@@ -16,6 +16,10 @@ var Post = mongoose.model('Post', {
   date: {
     type: Date,
     default: Date.now()
+  },
+  status: {
+    type: String,
+    default: 'Delivered'
   }
 });
 
