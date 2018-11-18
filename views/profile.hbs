@@ -47,14 +47,14 @@
                   <h5><p text="PROFILE" align ="center">PROFILE</p></h5>
                 </div>
                 <div class="card-body">
-                   <p text="NAME" align ="center">Name</p>
+                   <p text="NAME" align ="center">{{user.profile.about.name.firstName}} {{user.profile.about.name.middleName}} {{user.profile.about.name.lastName}}</p>
                    <p text="BATCH" align ="center">2019 Pasout Batch</p>
-                   <p text="SEMESTER" align ="center">Semester</p>
+                   <p text="SEMESTER" align ="center">{{user.profile.about.sem}}</p>
                 </div>
               </div>
 
 
-              <div class="card" mb-3 id="About">
+              <div class="card mb-3" id="About">
                  <div class="card-header">
                     <h5>ABOUT</h5>
                  </div>
@@ -72,8 +72,8 @@
                        <p>dob</p>
                        <p>Male</p>
                        <p>Address</p>
-                       <p>Contact No</p>
-                       <p>Email Id</p>
+                       <p>{{user.profile.about.contact.phone}}</p>
+                       <p>{{user.profile.about.contact.email}}</p>
 
                      </div>
                    </div>
@@ -81,7 +81,7 @@
                  </div>
               </div>
 
-              <div class="card" mb-3 id="Education">
+              <div class="card mb-3" id="Education">
                  <div class="card-header">
                     <h5>EDUCATION</h5>
                  </div>
@@ -157,7 +157,7 @@
                         </tbody>
                       </table>
                  </div>
-                 <hr>
+                 <hr class="m-4">
                  <div class="card-body">
                     <div class="row">
                        <div class="col-sm-6">
@@ -168,7 +168,7 @@
                       </div>
                     </div>
                     College  Name<br>Board<br>12th/Diploma<br>2014-2015
-                    <hr>
+                      <hr>
                     <div class="row">
                        <div class="col-sm-6">
                         <h4><p>Class 10th</p>
@@ -181,7 +181,7 @@
                  </div>
               </div>
 
-              <div class="card" mb-3 id="Internship & Work Experience">
+              <div class="card mb-3" id="Internship & Work Experience">
                  <div class="card-header">
                     <h5>INTERNSHIP & WORK EXPERIENCE</h5>
                  </div>
@@ -190,7 +190,7 @@
                  </div>
               </div>
 
-              <div class="card" mb-3 id="Extra Curricular Activities">
+              <div class="card mb-3" id="Extra Curricular Activities">
                  <div class="card-header">
                     <h5>EXTRA CURRICULAR ACTIVITIES</h5>
                  </div>
@@ -199,7 +199,7 @@
                  </div>
               </div>
 
-              <div class="card" mb-3 id="Resume">
+              <div class="card mb-3" id="Resume">
                  <div class="card-header">
                     <h5>RESUME</h5>
                  </div>

@@ -74,7 +74,7 @@ app.get('/profile', authenticationMiddleware(), (req, res) => {
   req.user.populate('profile', (err, user) => {
       global.currentUser = user;
       res.render('profile.hbs', {
-        username: global.currentUser.email
+        user: global.currentUser
       });
   });
 });

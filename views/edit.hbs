@@ -12,16 +12,30 @@
 
     <style media="screen">
       body {
-        background-color: #eee;
+        background-color: #c1c1c1;
       }
-
+      h5 {
+        color:#B8860B;
+      }
+     p {
+       color:#696969;
+     }
+     div{
+       color:#696969;
+     }
+     class {
+       color:#696969;
+     }
+     form{
+       color:#696969;
+     }
+     id {
+       color:	#BC8F8F;
+     }
     </style>
 
   </head>
   <body>
-
-    {{> header}}
-
     <div class="container-fluid my-3">
       <div class="row">
 
@@ -33,7 +47,7 @@
            <div class="container" id="main">
               <div class="card mb-3">
                 <div class="card-header">
-                  <h5><p text="PROFILE" align ="center">PROFILE</p></h5>
+                  <h5 align ="center"><strong>PROFILE</strong></p></h5>
                 </div>
                 <div class="card-body">
                    <p text="NAME" align ="center">Name</p>
@@ -43,27 +57,31 @@
               </div>
 
 
-              <div class="card" mb-3 id="About">
+              <div class="card mb-3" id="About">
                  <div class="card-header">
-                    <h5>ABOUT</h5>
+                    <h5><strong>ABOUT</strong></h5>
                  </div>
                  <div class="card-body">
                    <div class="row">
                      <div class="col-sm-4">
                        <p>Address</p>
-                       <p>Contact No</p>
+                       <br>
+                       <br>
+                       <br>
+                       <P>Contact No</p>
                      </div>
                      <div class="col-sm-8">
-                       <p><textarea class="btn btn-secondary btn-lg" aria-label="With textarea"></textarea></p>
-                       <p><input type="text" class="btn btn-secondary btn-lg" name="contact no" /></p>
+                       <textarea rows="4" cols="33"></textarea>
+                       <br>
+                      <input type="text" class="btn-lg" name="contact no" />
                      </div>
                    </div>
                  </div>
               </div>
 
-              <div class="card" mb-3 id="Education">
+              <div class="card mb-3" id="Education">
                  <div class="card-header">
-                    <h5>EDUCATION</h5>
+                    <h5><strong>EDUCATION</strong></h5>
                  </div>
                  <div class="card-body">
                   <div class="row">
@@ -167,11 +185,11 @@
                    </div>
                     <hr>
                     <div class="col-sm-9">
-                     <h4><p>Update Education Details</p>
+                     <h4><p>Update Education Details</p></h4>
                     </div>
                     <div class="row">
                       <div class="col-sm-10">
-                         <h6><p>School/Institution</p><h6>
+                         <h6><p>College/Institution</p><h6>
                          <input type="text" class="btn-lg btn-block" name="School/Institutio" />
                          <h6><p>Board/University</p><h6>
                          <input type="text" class="btn-lg btn-block" name="Board/University" />
@@ -192,9 +210,9 @@
                  </div>
               </div>
 
-              <div class="card" mb-3 id="Internship & Workshop">
+              <div class="card mb-3" id="Internship & Work Experience">
                  <div class="card-header">
-                    <h5>INTERNSHIP & WORK EXPERIENCE</h5>
+                    <h5><strong>INTERNSHIP & WORK EXPERIENCE</strong></h5>
                  </div>
                 <div class="card-body">
                  <div class="row">
@@ -226,10 +244,11 @@
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="card" mb-3 id="Extra Curricular Activities">
+              <div class="card mb-3" id="Extra Curricular Activities">
                  <div class="card-header">
-                    <h5>EXTRA CURRICULAR ACTIVITIES</h5>
+                    <h5><strong>EXTRA CURRICULAR ACTIVITIES</strong></h5>
                  </div>
                  <div class="card-body">
                     <div class="row">
@@ -246,18 +265,28 @@
                  </div>
               </div>
 
-              <div class="card" mb-3 id="Resume">
+              <div class="card mb-3" id="Resume">
                  <div class="card-header">
-                    <h5>RESUME</h5>
+                    <h5><strong>RESUME</strong></h5>
                  </div>
                  <div class="card-body">
-
+                   <form action="myform.cgi">
+                     <input type="file" name="fileupload" value="fileupload" id="fileupload">
+                   </form>
                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1"></label>
+                 <a href="/profile" class="btn btn-primary">Save</a>
+                 <input type="button" class="btn btn-primary" name="Cancel" value="cancel" />
               </div>
 
            </div>
          </div>
     </div>
+
+
 
     <div class="col-sm-3">
 
