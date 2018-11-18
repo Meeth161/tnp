@@ -80,11 +80,14 @@ app.get('/profile', authenticationMiddleware(), (req, res) => {
 });
 
 app.get('/home', authenticationMiddleware(), (req, res) => {
-  Post.find({}, (err, doc) => {
-    res.render('home.hbs', {
-      posts: doc,
-      user:req.user
-    });
+  req.user.populate('profile', (err, user) => {
+      global.currentUser = user;
+      Post.find({}, (err, doc) => {
+        res.render('home.hbs', {
+          posts: doc,
+          user:global.currentUser
+        });
+      });
   });
 });
 
@@ -137,13 +140,21 @@ app.post('/signup', (req, res) => {
 
 app.get('/dashboard', (req, res) => {
 
-  User.find({role: 'student'}).populate('profile').then((doc) => {
-    Post.find({}).then((posts) => {
-      res.render('dashboard.hbs', {
-        users: doc,
-        posts: posts
-      });
-    })
+  req.user.populate('profile', (err, user) => {
+      global.currentUser = user;
+      if(global.currentUser.role == 'admin') {
+        User.find({role: 'student'}).populate('profile').then((doc) => {
+          Post.find({}).then((posts) => {
+            res.render('dashboard.hbs', {
+              users: doc,
+              posts: posts
+            });
+          })
+        });
+      }
+      else {
+        res.redirect('/home')
+      }
   });
 });
 

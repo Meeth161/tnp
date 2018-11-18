@@ -19,7 +19,7 @@
         <div class="card text-center my-5 p-3" style="width: 18rem;">
           <div class="card-body">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi8Dz5frehlEts1m2kg1b6t70JeZsTU5Jdp_OJfmemnS7RaylByA" alt="" class="rounded-circle border border-light" height="120px" width="120px">
-            <p><h5 class="card-title">{{profile.about.name}}</h5></p>
+            <p><h5 class="card-title">{{user.profile.about.name.firstName}} {{user.profile.about.name.middleName}} {{user.profile.about.name.lastName}}</h5></p>
             <table class="table table-sm">
               <thead>
                 <th>Applications</th>
@@ -42,7 +42,8 @@
           <div class="card mt-5 px-3">
             <h4 class="display-4">{{title}}</h4>
             {{username}}
-            <p>{{content}}</p>
+            <br>
+            <p style="font-size: 20px">{{content}}</p>
           </div>
         {{/each}}
       </div>
