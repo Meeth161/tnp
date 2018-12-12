@@ -40,7 +40,9 @@ passport.use(new LocalStrategy( (username, password, done) => {
 
     if(err) { return done(err); }
 
-    if(!doc) { return done(null, false); }
+    if(!doc) {
+      return done(null, false);
+    }
 
     const hash = doc.password;
 
@@ -61,6 +63,7 @@ app.get('/', authMiddleWare(), (req, res) => {
 });
 
 app.get('/login', authMiddleWare(), (req, res) => {
+  console.log(req.flash('login'));
   res.render('login.hbs');
 });
 
@@ -159,7 +162,14 @@ app.get('/dashboard', (req, res) => {
 });
 
 app.get('/edit', (req, res) => {
-  res.render('edit.hbs');
+  req.user.populate('profile', (err, user) => {
+      global.currentUser = user;
+      Post.find({}, (err, doc) => {
+        res.render('edit.hbs', {
+          user:global.currentUser
+        });
+      });
+  });
 });
 
 app.post('/edit', (req, res) => {
@@ -189,8 +199,11 @@ app.get('/about', (req, res) => {
   res.render('about.hbs');
 });
 
+app.get('/help', (req, res) => {
+  res.render('help.hbs');
+})
+
 app.post('/notice', (req, res) => {
-  console.log(global.currentUser);
   var post = new Post({
     title: req.body.title,
     content: req.body.content,
