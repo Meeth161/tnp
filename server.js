@@ -76,21 +76,33 @@ app.get('/logout', (req, res) => {
 app.get('/profile', authenticationMiddleware(), (req, res) => {
   req.user.populate('profile', (err, user) => {
       global.currentUser = user;
-      res.render('profile.hbs', {
-        user: global.currentUser
-      });
+      if(global.currentUser.role == 'admin')
+      {
+        res.redirect('/dashboard')
+      }
+      else {
+        res.render('profile.hbs', {
+          user: global.currentUser
+        });
+      }
   });
 });
 
 app.get('/home', authenticationMiddleware(), (req, res) => {
   req.user.populate('profile', (err, user) => {
       global.currentUser = user;
-      Post.find({}, (err, doc) => {
-        res.render('home.hbs', {
-          posts: doc,
-          user:global.currentUser
+      if(global.currentUser.role == 'admin')
+      {
+        res.redirect('/dashboard')
+      }
+      else {
+        Post.find({}, (err, doc) => {
+          res.render('home.hbs', {
+            posts: doc,
+            user:global.currentUser
+          });
         });
-      });
+      }
   });
 });
 
@@ -166,7 +178,7 @@ app.get('/edit', (req, res) => {
       global.currentUser = user;
       Post.find({}, (err, doc) => {
         res.render('edit.hbs', {
-          user:global.currentUser
+          user: global.currentUser
         });
       });
   });
@@ -174,13 +186,23 @@ app.get('/edit', (req, res) => {
 
 app.post('/edit', (req, res) => {
   console.log(req.body);
-  var profile = new Profile({
-    about: {name: {firstName: req.body.name, lastName: req.body.name}, usn: req.body.usn}
-  });
 
-  profile.save().then((doc) => {
+  Profile.findById(global.currentUser.profile).then((doc) => {
     console.log(JSON.stringify(doc, undefined, 2));
-    res.redirect('/profile');
+
+    doc.about.dob = req.body.dob
+    doc.about.gender = req.body.gender
+    doc.about.branch = req.body.branch
+    doc.education.be = req.body.score
+    doc.education.college = req.body.xiiscore
+    doc.education.school = req.body.xscore
+
+    doc.save().then((doc)=>{
+      res.redirect('/profile');
+    }, (e) => {
+      console.log(e);
+      res.send(e);
+    })
   }, (e) => {
     console.log(e);
     res.send(e);

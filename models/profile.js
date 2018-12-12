@@ -1,20 +1,5 @@
 const mongoose = require('mongoose');
 
-var projectSchema = new mongoose.Schema({
-  title: {
-    type: String,
-  },
-  domain: {
-    type: String,
-  },
-  description: {
-    type: String
-  },
-  role: {
-    type: String
-  }
-});
-
 var Profile = mongoose.model('Profile', {
   about: {
     name: {
@@ -36,7 +21,7 @@ var Profile = mongoose.model('Profile', {
       trim: true
     },
     dob: {
-      type: Date
+      type: String
     },
     usn: {
       type: String,
@@ -48,7 +33,8 @@ var Profile = mongoose.model('Profile', {
       trim: true
     },
     sem: {
-      type: Number
+      type: Number,
+      default: 7
     },
     contact: {
       email: {
@@ -62,78 +48,21 @@ var Profile = mongoose.model('Profile', {
         maxlength: 10
       }
     },
-    address: {
-      type: String,
-      trim: true
-    }
   },
   education: {
-    current: {
-      course: {
-        type: String
-      },
-      university: {
-        type: String
-      },
-      institute: {
-        type: String
-      },
-      startdate: {
-        type: Date
-      },
-      enddate: {
-        type: Date
-      },
-      score: {
-        type: Number
-      }
+    be: {
+      type: Number
     },
     college: {
-      course: {
-        type: String
-      },
-      university: {
-        type: String
-      },
-      institute: {
-        type: String
-      },
-      startdate: {
-        type: Date
-      },
-      enddate: {
-        type: Date
-      },
-      score: {
-        type: Number
-      }
+      type: Number
     },
     school: {
-      course: {
-        type: String
-      },
-      university: {
-        type: String
-      },
-      institute: {
-        type: String
-      },
-      startdate: {
-        type: Date
-      },
-      enddate: {
-        type: Date
-      },
-      score: {
-        type: Number
-      }
+      type: Number
+    },
+    status: {
+      type: String,
+      default: 'not verified'
     }
-  },
-  projects: [projectSchema],
-  activities: [String],
-  status: {
-    type: String,
-    default: 'not verified'
   }
 });
 

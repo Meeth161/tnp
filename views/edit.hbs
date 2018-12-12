@@ -1,197 +1,74 @@
-{{> header}}
+{{>header}}
+
 <body>
-  <div class="container-fluid my-3">
-    <div class="row">
-
-      <div class="col-sm">
-      </div>
-
-      <div class="col-sm-8">
-        <div class="container">
-          <div class="card mb-3">
-            <div class="card-header">
-              <h5 align ="center"><strong>PROFILE</strong></p></h5>
-            </div>
-            <div class="card-body">
-              <p align ="center">{{user.profile.about.name.firstName}} {{user.profile.about.name.middleName}} {{user.profile.about.name.lastName}}</p>
-              <p align ="center">2019 Pasout Batch</p>
-              <p align ="center">Semester</p>
-            </div>
+  <div class="container my-5">
+    <form action="/edit" method="post">
+      <div class="card p-4">
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-6">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{user.email}}">
           </div>
-
-          <div class="card mb-3" id="About">
-            <div class="card-header">
-              <h5><strong>ABOUT</strong></h5>
-            </div>
-            <div class="card-body">
-
-            </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Contact</label>
+          <div class="col-sm-6">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{user.profile.about.contact.phone}}">
           </div>
-
-          <div class="card mb-3" id="Education">
-            <div class="card-header">
-              <h5><strong>EDUCATION</strong></h5>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-6">
-                  <h4>Current/Ongoing Course</h4>
-                </div>
-                <div class="col-sm">
-                  <thead>
-                    <tr>
-                      <th scope="col"></th>
-                      <th scope="col"><strong>CGPA</strong></th>
-                    </tr>
-                  </thead>
-                </div>
-
-                <div class="col-sm">
-                  <thead>
-                    <tr>
-                      <th scope="col"></th>
-                      <th scope="col"><strong>SGPA</strong></th>
-                    </tr>
-                  </thead>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-4">
-                  <h6><p>Total Backlogs</p></h6>
-                </div>
-                <div class="col-sm-4">
-                  <input type="text" name="Total Backlogs" />
-                </div>
-              </div>
-              <hr>
-              <h4><p>Update Education Details</p>
-              <div class="row">
-                <div class="col-sm-10">
-                  <h6><p>School/Institution</p><h6>
-                  <input type="text" class="btn-lg btn-block" name="School/Institutio" />
-                  <h6><p>Board/University</p><h6>
-                  <input type="text" class="btn-lg btn-block" name="Board/University" />
-                  <h6><p>Program/Degree</p><h6>
-                  <select class="btn-lg btn-block">
-                    <option value="" disabled selected>None</option>
-                    <option value="volvo">Class X</option>
-                    <option value="saab"> Class XII</option>
-                    <option value="mercedes">B.E/B.Tech</option>
-                    <option value="audi">Other Degree</option>
-                  </select>
-                  <h6><p>Branch/Specialization</p><h6>
-                  <input type="text" class=" btn-lg btn-block" name="Board/University" />
-                  <h6><p>Score</p><h6>
-                  <input type="text" class="btn-lg" name="Score" />
-                </div>
-              </div>
-              <hr>
-              <h4><p>Update Education Details</p></h4>
-              <div class="row">
-                <div class="col-sm-10">
-                  <h6><p>College/Institution</p><h6>
-                  <input type="text" class="btn-lg btn-block" name="School/Institutio" />
-                  <h6><p>Board/University</p><h6>
-                  <input type="text" class="btn-lg btn-block" name="Board/University" />
-                  <h6><p>Program/Degree</p><h6>
-                  <select class="btn-lg btn-block">
-                    <option value="" disabled selected>None</option>
-                    <option value="volvo">Class X</option>
-                    <option value="saab"> Class XII</option>
-                    <option value="mercedes">B.E/B.Tech</option>
-                    <option value="audi">Other Degree</option>
-                  </select>
-                  <h6><p>Branch/Specialization</p><h6>
-                  <input type="text" class=" btn-lg btn-block" name="Board/University" />
-                  <h6><p>Score</p><h6>
-                  <input type="text" class="btn-lg" name="Score" />
-                </div>
-              </div>
-            </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-2 col-form-label">Date Of Birth</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputPassword" name="dob" placeholder="dd/mm/yyyy">
           </div>
-
-          <div class="card mb-3" id="Internship & Work Experience">
-            <div class="card-header">
-              <h5><strong>INTERNSHIP & WORK EXPERIENCE</strong></h5>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-10">
-                  <h6><p>Company</p><h6>
-                  <input type="text" class="btn-lg btn-block" name="Company" />
-                  <h6><p>Job Title</p><h6>
-                  <input type="text" class="btn-lg btn-block" name="Job Title" />
-                  <h6><p>Position Type</p><h6>
-                  <select class="btn-lg btn-block">
-                    <option value="" disabled selected>None</option>
-                    <option value="volvo">Part Time</option>
-                    <option value="saab">Full Time</option>
-                    <option value="mercedes">Internship</option>
-                  </select>
-                  <h6><p>Location</p><h6>
-                  <input type="text" class="btn-lg btn-block" name="Location" />
-                  <h6><p>Time Period</p><h6>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <p text="Start Date">Start Date</p>
-                      <input type="date" />
-                    </div>
-                    <div class="col-sm-6">
-                      <p text="End Date">End Date</p>
-                      <input type="date" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="inlineFormCustomSelect">Gender</label>
+          <div class="col-sm-6">
+            <select class="custom-select form-control" id="inlineFormCustomSelect" name="gender">
+              <option selected>Choose Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
           </div>
-
-          <div class="card mb-3" id="Extra Curricular Activities">
-            <div class="card-header">
-              <h5><strong>EXTRA CURRICULAR ACTIVITIES</strong></h5>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-10">
-                  <h6><p>Category</p><h6>
-                  <input type="text" class="btn-lg btn-block" name="Category" />
-                </div>
-                <div class="col-sm-10">
-                  <h6><p>Description</p><h6>
-                  <textarea class="btn-lg btn-block" rows="4" cols="65"></textarea>
-                </div>
-              </div>
-            </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="inlineFormCustomSelect">B.E Branch</label>
+          <div class="col-sm-6">
+            <select class="custom-select form-control" id="inlineFormCustomSelect" name="branch">
+              <option selected>Choose Branch</option>
+              <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+              <option value="Electronics and Electrical Engineering">Electronics and Electrical Engineering</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+            </select>
           </div>
-
-          <div class="card mb-3" id="Resume">
-            <div class="card-header">
-              <h5><strong>RESUME</strong></h5>
-            </div>
-            <div class="card-body">
-              <form action="myform.cgi">
-                <input type="file" name="fileupload" value="fileupload" id="fileupload">
-              </form>
-            </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-2 col-form-label">B.E Score</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputPassword" placeholder="Percentage" name="score">
           </div>
-
-          <div class="form-group">
-            <label for="exampleInputEmail1"></label>
-            <a href="/profile" class="btn btn-primary">Save</a>
-            <input type="button" class="btn btn-primary" name="Cancel" value="cancel" />
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-2 col-form-label">Class XII Score</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputPassword" placeholder="XII Percentage" name="xiiscore">
           </div>
-
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-2 col-form-label">Class X Score</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputPassword" placeholder="X Percentage" name="xscore">
+          </div>
+        </div>
+        <div class="form-group row m-4">
+          <div class="col-sm-8">
+            <button type="submit" class="btn btn-primary btn-block">Save</button>
+          </div>
         </div>
       </div>
-
-    <div class="col-sm">
-    </div>
+    </form>
   </div>
-</div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+</body>
